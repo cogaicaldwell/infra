@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package document;
+
+option go_package = "coginfra/protos";
+
+import "google/api/annotations.proto";
+
+service DocumentService {
+  rpc ReadDocument(ReadDocumentRequest) returns (ReadDocumentResponse) {
+    option (google.api.http) = {
+      get: "/v1/documents/{path}"
+    };
+  }
+
+  rpc AddDocument(AddDocumentRequest) returns (AddDocumentResponse) {
+    option (google.api.http) = {
+      post: "/v1/documents/{path}"
+      body: "*"
+    };
+  }
+}
+
+message ReadDocumentRequest {
+  string path = 1;
+}
+
+message ReadDocumentResponse {
+  string documents = 1;
+}
+
+message AddDocumentRequest {
+  string path = 1;
+  string doc = 2;
+}
+
+message AddDocumentResponse {
+  bool inserted = 1;
+}
