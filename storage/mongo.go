@@ -93,7 +93,7 @@ func (s *MongoStorage) ValidateApiKey(apiKey string) (bool, error) {
 		FindOne(context.Background(), bson.M{"_id": apiKey}).
 		Decode(&res)
 	if err != nil {
-		fmt.Println(err)
+		// fmt.Println(err)
 		if err == mongo.ErrNoDocuments {
 			return false, nil // API key not found
 		}
@@ -114,7 +114,7 @@ func (s *MongoStorage) CreateAPIKey() (string, error) {
 	if e != nil {
 		return "", e
 	}
-	fmt.Println(d)
+	// fmt.Println(d)
 	return apiKey.String(), nil
 }
 

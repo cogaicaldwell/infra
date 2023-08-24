@@ -6,8 +6,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	"coginfra/api"
-	"coginfra/cli"
+	"coginfra/apps/api"
+	"coginfra/apps/cli"
 	"coginfra/configs"
 	"coginfra/storage"
 	"coginfra/utils"
