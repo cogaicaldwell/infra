@@ -2,7 +2,6 @@ package storage
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"github.com/google/uuid"
@@ -108,7 +107,7 @@ func (s *MongoStorage) CreateAPIKey() (string, error) {
 
 	apiStruct := types.CreateNewApiKey(apiKey.String())
 
-	d, e := s.Client.Database(types.DATABASE_NAME).
+	_, e := s.Client.Database(types.DATABASE_NAME).
 		Collection(types.API_COLLECTION).
 		InsertOne(context.Background(), apiStruct)
 	if e != nil {
